@@ -28,6 +28,7 @@ bool init_sdl(sdl_context_t* ctx, const char* title, uint32_t width, uint32_t he
     }
 
     ctx->window = SDL_CreateWindow(title, width, height, SDL_WINDOW_RESIZABLE);
+    ctx->renderer = SDL_CreateRenderer(ctx->window, NULL);
 
     return true;
 }   

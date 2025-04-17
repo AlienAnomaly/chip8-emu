@@ -22,6 +22,7 @@ SOFTWARE. */
 
 #include "machine.h"
 #include "sdl_context.h"
+#include "update_context.h"
 
 int main () {
     // create and initialize machine
@@ -29,6 +30,7 @@ int main () {
     init_machine(&machine);
     load_rom(&machine, "roms/ibm.ch8");
 
+    
     // initialize sdl and create a window context
     sdl_context_t ctx = {};
     init_sdl(&ctx, "Game Window", 800, 600);
@@ -52,6 +54,9 @@ int main () {
         }
 
         execute_instruction(&machine);
+
+        clear_display(&ctx);
+        update_display(&ctx);
     }
 
     sdl_exit(&ctx);
