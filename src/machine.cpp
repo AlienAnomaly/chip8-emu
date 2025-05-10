@@ -25,7 +25,7 @@ namespace chip8
                 << filepath
                 << "\n";
             
-            return;
+            exit(EXIT_FAILURE);
         }
 
         fseek(file, 0, SEEK_END);
@@ -42,7 +42,7 @@ namespace chip8
         uint8_t part_1 = ram[pc];
         uint8_t part_2 = ram[pc+1];
         uint16_t opcode = (part_1 << 8) | part_2;
-        pc = ram[0x200 += 2];
+        pc += 2;
         this->opcode = opcode;
 
         return opcode;
@@ -67,7 +67,7 @@ namespace chip8
 
                     } break;
 
-                    // This default switch case will act as the 0NNN instruction.
+                    // This default switch case will act as the 0NNN instruction.tg
                     default:
                     {
 
@@ -107,10 +107,6 @@ namespace chip8
         memset(machine->keys, false, sizeof(machine->keys));
         memset(machine->display, false, sizeof(machine->display));
         machine->load_rom(rom_path);
-    }
-
-    void init_machine(Machine* machine)
-    {
         machine->pc = machine->ram[0x200];
     }
 }

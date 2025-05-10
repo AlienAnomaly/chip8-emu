@@ -43,4 +43,14 @@ namespace chip8
 
         return true;
     }
+
+    SDL_Window& Context::get_window()
+    {
+        return *window;
+    }
+
+    SDL_Renderer& Context::get_renderer()
+    {
+        return *renderer;
+    }
 }

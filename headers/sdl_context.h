@@ -14,5 +14,8 @@ namespace chip8
         static SDL_Renderer* renderer;
     private:
         bool init_context(const char* title, uint32_t width, uint32_t height);
+    public:
+        static SDL_Window& get_window();
+        static SDL_Renderer& get_renderer();
     };
 }
